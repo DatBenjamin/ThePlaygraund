@@ -1,94 +1,140 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Profesional - Ingeniería en Sistemas</title>
+    <title>Portafolio | Ingeniería en Sistemas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- Estilos Generales --- */
+        /* --- Variables de Color (Tema Oscuro por Defecto - Estilo VS Code) --- */
         :root {
-            --primary-color: #0056b3; /* Azul profesional */
-            --secondary-color: #f4f4f4;
-            --text-color: #333;
-            --bg-color: #ffffff;
+            --bg-color: #1e1e1e;       /* Fondo principal oscuro */
+            --card-bg: #252526;        /* Fondo de tarjetas */
+            --text-color: #d4d4d4;     /* Texto gris claro */
+            --heading-color: #ffffff;  /* Títulos blancos */
+            --primary-color: #007acc;  /* Azul VS Code */
+            --accent-gradient: linear-gradient(135deg, #007acc 0%, #005fa3 100%); /* Difuminado azul */
+            --nav-bg: rgba(30, 30, 30, 0.95);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --border-color: #3e3e42;
         }
 
-        html {
-            scroll-behavior: smooth; /* Esto logra el efecto de desplazamiento suave */
+        /* --- Variables para Tema Claro --- */
+        [data-theme="light"] {
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --heading-color: #111111;
+            --primary-color: #0056b3;
+            --accent-gradient: linear-gradient(135deg, #0056b3 0%, #003d80 100%);
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --border-color: #e5e7eb;
         }
 
+        /* --- Estilos Base --- */
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Consolas, sans-serif; /* Consolas para toque "coder" */
             margin: 0;
-            padding: 0;
+            background-color: var(--bg-color);
             color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
             line-height: 1.6;
         }
 
         /* --- Navegación --- */
         nav {
-            background-color: #333;
-            color: #fff;
-            padding: 1rem;
+            background-color: var(--nav-bg);
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--primary-color);
+            backdrop-filter: blur(5px);
         }
 
-        nav a {
-            color: #fff;
+        .nav-links a {
+            color: var(--text-color);
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
+            margin-left: 20px;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
-        nav a:hover {
+        .nav-links a:hover { color: var(--primary-color); }
+
+        /* Botón Toggle Tema */
+        #theme-toggle {
+            background: none;
+            border: 2px solid var(--primary-color);
             color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        #theme-toggle:hover {
+            background: var(--primary-color);
+            color: #fff;
         }
 
-        /* --- Sección Principal (Hero) --- */
+        /* --- Header / Hero --- */
         header {
-            height: 100vh; /* Ocupa toda la pantalla */
+            height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: #fff;
             text-align: center;
+            /* Fondo con gradiente sutil sobre oscuro */
+            background: radial-gradient(circle at center, #2d2d30 0%, #1e1e1e 100%);
+            padding: 0 20px;
         }
 
         header h1 {
             font-size: 3.5rem;
-            margin-bottom: 0.5rem;
+            color: var(--heading-color);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,122,204, 0.2); /* Brillo azul sutil */
         }
 
         header p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-family: 'Consolas', monospace; /* Toque de código */
         }
 
-        .social-btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 10px 20px;
-            margin: 5px;
+        .buttons-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-btn {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 12px 30px;
             border-radius: 5px;
             text-decoration: none;
-            transition: background 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 122, 204, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
         }
 
-        .social-btn:hover {
-            background-color: #004494;
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 122, 204, 0.5);
         }
 
-        /* --- Secciones de Contenido --- */
+        /* --- Secciones Generales --- */
         section {
             padding: 80px 20px;
             max-width: 1000px;
@@ -97,146 +143,212 @@
 
         h2 {
             text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 10px;
-        }
-
-        /* --- Formación --- */
-        .edu-item {
-            background: var(--secondary-color);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 5px solid var(--primary-color);
-            border-radius: 4px;
-        }
-
-        /* --- Aptitudes (Grid) --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            text-align: center;
-        }
-
-        .skill-card {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        /* --- Proyectos --- */
-        .project-card {
-            margin-bottom: 30px;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--heading-color);
+            position: relative;
         }
         
-        .project-card h3 {
+        /* Línea decorativa debajo de títulos */
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-gradient);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- Tarjetas (Cards) --- */
+        .card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
             margin-top: 0;
+            color: var(--heading-color);
+        }
+
+        /* Grid para Aptitudes */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: border-color 0.3s;
+        }
+
+        .skill-item:hover {
+            border-color: var(--primary-color);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
         }
 
         /* --- Footer --- */
         footer {
-            background-color: #333;
-            color: #fff;
             text-align: center;
-            padding: 20px;
+            padding: 40px;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
             margin-top: 50px;
+            font-size: 0.9rem;
         }
 
-        /* --- Responsive --- */
+        /* Responsive */
         @media (max-width: 768px) {
             header h1 { font-size: 2.5rem; }
-            nav a { display: block; margin: 10px 0; }
+            .nav-links { display: none; } /* En móvil simplificado */
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#formacion">Formación</a>
-        <a href="#aptitudes">Aptitudes</a>
-        <a href="#proyectos">Proyectos</a>
+        <div style="font-weight:bold; font-size:1.2rem; color:var(--primary-color);">
+            &lt;Dev/&gt;
+        </div>
+        <div class="nav-links">
+            <a href="#formacion">Formación</a>
+            <a href="#aptitudes">Aptitudes</a>
+            <a href="#proyectos">Proyectos</a>
+        </div>
+        <button id="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-sun"></i>
+        </button>
     </nav>
 
     <header>
-        <h1>[Tu Nombre Completo]</h1>
-        <p>Estudiante de Ingeniería en Sistemas de Información | UTN</p>
+        <h1>Tomas Benjamin Vega</h1>
+        <p>Ingeniería en Sistemas | UTN</p>
         
-        <div class="social-links">
-            <a href="#" class="social-btn">LinkedIn</a>
-            <a href="#" class="social-btn">GitHub</a>
-            <a href="mailto:tuemail@ejemplo.com" class="social-btn">Email</a>
+        <div class="buttons-container">
+            <a href="#formacion" class="cta-btn">Formación Académica</a>
+            <a href="#aptitudes" class="cta-btn">Mis Aptitudes</a>
+            <a href="#proyectos" class="cta-btn">Ver Proyectos</a>
         </div>
-        
-        <br>
-        <a href="#formacion" style="color: #fff; margin-top: 20px; display: inline-block;">
-            ⬇ Ver mi trabajo
-        </a>
+
+        <div style="margin-top: 30px;">
+            <a href="#" style="color:var(--text-color); font-size:1.5rem; margin:0 10px;"><i class="fab fa-linkedin"></i></a>
+            <a href="#" style="color:var(--text-color); font-size:1.5rem; margin:0 10px;"><i class="fab fa-github"></i></a>
+            <a href="mailto:tuemail@ejemplo.com" style="color:var(--text-color); font-size:1.5rem; margin:0 10px;"><i class="fas fa-envelope"></i></a>
+        </div>
     </header>
 
     <section id="formacion">
         <h2>Formación Académica</h2>
-        
-        <div class="edu-item">
+        <div class="card">
             <h3>Ingeniería en Sistemas de Información</h3>
-            <p><strong>Universidad Tecnológica Nacional (UTN)</strong> | En curso</p>
-            <p>Enfoque en paradigmas de programación, análisis matemático y sistemas operativos.</p>
+            <p style="color: var(--primary-color); font-weight: bold;">Universidad Tecnológica Nacional (UTN)</p>
+            <p>En curso 2025-2026. Formación rigurosa en análisis matemático, algoritmos y paradigmas de programación.</p>
         </div>
-
-        <div class="edu-item">
-            <h3>Autodidacta & Cursos Técnicos</h3>
-            <p>Formación continua en tecnologías actuales y desarrollo de software.</p>
+        <div class="card">
+            <h3>Tecnico Electronico</h3>
+            <p style="color: var(--primary-color); font-weight: bold;">Centro de Educacion Tecnica N°16 (CET N°16)</p>
+            <p>Formacion escencial en electronica y en sistemas embebidos.</p>
         </div>
     </section>
 
-    <section id="aptitudes" style="background-color: #f9f9f9;">
-        <h2>Aptitudes y Tecnologías</h2>
+    <section id="aptitudes">
+        <h2>Aptitudes Técnicas</h2>
         <div class="skills-grid">
-            <div class="skill-card">
-                <h3>Bases de Datos (SQL)</h3>
-                <p>Manejo de consultas y bases de datos relacionales (SQLite).</p>
+            
+            <div class="skill-item">
+                <i class="fab fa-python skill-icon"></i>
+                <h3>Python</h3>
+                <p>Lenguaje principal. Desarrollo de scripts, automatización y lógica de backend.</p>
             </div>
-            <div class="skill-card">
-                <h3>Linux & Terminal</h3>
-                <p>Uso de línea de comandos y administración básica de sistemas.</p>
+
+            <div class="skill-item">
+                <i class="fas fa-database skill-icon"></i>
+                <h3>SQL</h3>
+                <p>Gestión de bases de datos relacionales, consultas optimizadas y modelado de datos.</p>
             </div>
-            <div class="skill-card">
-                <h3>Ciencias Exactas</h3>
-                <p>Sólida base en Análisis Matemático y Geometría Analítica.</p>
+
+            <div class="skill-item">
+                <i class="fas fa-microchip skill-icon"></i>
+                <h3>Sistemas Embebidos</h3>
+                <p>Integración Hardware/Software. Programación de ESP32, Arduino y Raspberry Pi. </p>
             </div>
-            <div class="skill-card">
-                <h3>Sistemas Operativos</h3>
-                <p>Comprensión teórica basada en bibliografía especializada (Tanenbaum).</p>
+
+            <div class="skill-item">
+                <i class="fab fa-git-alt skill-icon"></i>
+                <h3>Git & GitHub</h3>
+                <p>Control de versiones distribuido, manejo de ramas y flujo de trabajo colaborativo.</p>
             </div>
+
         </div>
     </section>
 
     <section id="proyectos">
-        <h2>Mis Proyectos</h2>
-        
-        <div class="project-card">
-            <h3>Gestión de Base de Datos Northwind</h3>
-            <p>Prácticas avanzadas de consultas SQL utilizando la base de datos de ejemplo Northwind en entorno SQLite. Análisis de relaciones entre tablas y optimización de queries.</p>
+        <h2>Proyectos Destacados</h2>
+        <div class="card">
+            <h3>Dispositivo IoT de Monitoreo de Salud (HealthCare)</h3>
+            <p style="font-size: 0.9rem; color: #aaa; margin-bottom: 10px;">
+                <i class="fas fa-microchip"></i> C++ | ESP32 | Web Server
+            </p>
+            <p>
+                Desarrollo de un sistema embebido basado en el microcontrolador <strong>ESP32</strong> capaz de medir frecuencia cardíaca y saturación de oxígeno (SpO2) en tiempo real.
+            </p>
+            <ul style="text-align: left; margin-top: 10px; opacity: 0.9;">
+                <li>Implementación de <strong>Servidor Web HTTP</strong> interno en el chip para visualización remota de datos mediante HTML/CSS.</li>
+                <li>Programación en <strong>C++</strong> gestionando protocolos de comunicación <strong>I2C</strong> y manejo de interrupciones.</li>
+                <li>Integración de sensores (MAX30100) y corrección de hardware (modificación de reguladores de voltaje) para compatibilidad lógica.</li>
+            </ul>
         </div>
-
-        <div class="project-card">
-            <h3>Proyecto Académico LACCEI</h3>
-            <p>Investigación y desarrollo de propuesta ingenieril para el capítulo estudiantil de LACCEI. Enfoque en innovación tecnológica aplicada.</p>
+        <div class="card">
+            <h3>Proyecto Heal Care</h3>
+            <p>Sistema .</p>
         </div>
-
-        <div class="project-card">
-            <h3>Plan de Fundamentos de Programación</h3>
-            <p>Desarrollo y ejecución de un plan intensivo de 8 semanas para el dominio de conceptos core de la programación estructurada y orientada a objetos.</p>
+        <div class="card">
+            <h3>Sistema de Industrial</h3>
+            <p>Diseño y ejecución de roadmap de aprendizaje autodidacta para fundamentos de programación.</p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 [Tu Nombre] - Estudiante UTN</p>
+        <p>&copy; 2026 Desarrollado por Tomas Benjamin Vega</p>
     </footer>
 
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const icon = toggleButton.querySelector('i');
+        const html = document.documentElement;
+
+        function toggleTheme() {
+            const currentTheme = html.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+    </script>
 </body>
 </html>
