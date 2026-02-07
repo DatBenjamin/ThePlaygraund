@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Profesional - Ingeniería en Sistemas</title>
+    <style>
+        /* --- Estilos Generales --- */
+        :root {
+            --primary-color: #0056b3; /* Azul profesional */
+            --secondary-color: #f4f4f4;
+            --text-color: #333;
+            --bg-color: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Esto logra el efecto de desplazamiento suave */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Navegación --- */
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Sección Principal (Hero) --- */
+        header {
+            height: 100vh; /* Ocupa toda la pantalla */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-btn:hover {
+            background-color: #004494;
+        }
+
+        /* --- Secciones de Contenido --- */
+        section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        /* --- Formación --- */
+        .edu-item {
+            background: var(--secondary-color);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 4px;
+        }
+
+        /* --- Aptitudes (Grid) --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .skill-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* --- Proyectos --- */
+        .project-card {
+            margin-bottom: 30px;
+        }
+        
+        .project-card h3 {
+            margin-top: 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            nav a { display: block; margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#formacion">Formación</a>
+        <a href="#aptitudes">Aptitudes</a>
+        <a href="#proyectos">Proyectos</a>
+    </nav>
+
+    <header>
+        <h1>[Tu Nombre Completo]</h1>
+        <p>Estudiante de Ingeniería en Sistemas de Información | UTN</p>
+        
+        <div class="social-links">
+            <a href="#" class="social-btn">LinkedIn</a>
+            <a href="#" class="social-btn">GitHub</a>
+            <a href="mailto:tuemail@ejemplo.com" class="social-btn">Email</a>
+        </div>
+        
+        <br>
+        <a href="#formacion" style="color: #fff; margin-top: 20px; display: inline-block;">
+            ⬇ Ver mi trabajo
+        </a>
+    </header>
+
+    <section id="formacion">
+        <h2>Formación Académica</h2>
+        
+        <div class="edu-item">
+            <h3>Ingeniería en Sistemas de Información</h3>
+            <p><strong>Universidad Tecnológica Nacional (UTN)</strong> | En curso</p>
+            <p>Enfoque en paradigmas de programación, análisis matemático y sistemas operativos.</p>
+        </div>
+
+        <div class="edu-item">
+            <h3>Autodidacta & Cursos Técnicos</h3>
+            <p>Formación continua en tecnologías actuales y desarrollo de software.</p>
+        </div>
+    </section>
+
+    <section id="aptitudes" style="background-color: #f9f9f9;">
+        <h2>Aptitudes y Tecnologías</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Bases de Datos (SQL)</h3>
+                <p>Manejo de consultas y bases de datos relacionales (SQLite).</p>
+            </div>
+            <div class="skill-card">
+                <h3>Linux & Terminal</h3>
+                <p>Uso de línea de comandos y administración básica de sistemas.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Ciencias Exactas</h3>
+                <p>Sólida base en Análisis Matemático y Geometría Analítica.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Sistemas Operativos</h3>
+                <p>Comprensión teórica basada en bibliografía especializada (Tanenbaum).</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos">
+        <h2>Mis Proyectos</h2>
+        
+        <div class="project-card">
+            <h3>Gestión de Base de Datos Northwind</h3>
+            <p>Prácticas avanzadas de consultas SQL utilizando la base de datos de ejemplo Northwind en entorno SQLite. Análisis de relaciones entre tablas y optimización de queries.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Proyecto Académico LACCEI</h3>
+            <p>Investigación y desarrollo de propuesta ingenieril para el capítulo estudiantil de LACCEI. Enfoque en innovación tecnológica aplicada.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Plan de Fundamentos de Programación</h3>
+            <p>Desarrollo y ejecución de un plan intensivo de 8 semanas para el dominio de conceptos core de la programación estructurada y orientada a objetos.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 [Tu Nombre] - Estudiante UTN</p>
+    </footer>
+
+</body>
+</html>
